@@ -2,14 +2,10 @@ using System;
 
 namespace XLand.Nodes
 {
-    public enum PivotMode
-    {
-        Dynamic,
-        Static
-    }
 
-    [MarkAsNode(DisplayName = "Control/Pivot")]
-    public class PivotNode : Node
+
+    [MarkAsNode(DisplayName = "Control/Float Pivot")]
+    public class FloatPivotNode : PivotNodeBase
     {
         [MarkAsNodeField(Type = NodeFieldType.Input)]
         public float input;
@@ -26,26 +22,7 @@ namespace XLand.Nodes
         [MarkAsNodeField(Type = NodeFieldType.Output, DisplayName = "pivot")]
         public float pivotOutput;
 
-        public PivotNode()
-        {
-            ResetPivotEvent += ResetPivot;
-        }
-
-        public override void OnDeleted()
-        {
-            ResetPivotEvent -= ResetPivot;
-        }
-
-        public delegate void ResetPivotDelegate();
-
-        public static event ResetPivotDelegate ResetPivotEvent;
-
-        public static void TriggerResetPivot()
-        {
-            if (ResetPivotEvent != null) ResetPivotEvent.Invoke();
-        }
-
-        public void ResetPivot()
+        protected override void ResetPivot()
         {
             switch (mode)
             {

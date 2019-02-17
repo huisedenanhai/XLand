@@ -6,7 +6,7 @@ namespace XLand.Nodes
     {
         public void TriggerResetPivot()
         {
-            PivotNode.TriggerResetPivot();
+            PivotNodeBase.TriggerResetPivot();
         }
     }
 }
