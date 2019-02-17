@@ -24,36 +24,35 @@ namespace XLand
 
         public int unEvaluatedInDegree;
 
-        public static Node CreateFromData(NodeData data)
+        private void LoadData(NodeData data)
         {
-            var nodeInfo = GetNodeInfoByName(data.type);
-            Assert.IsNotNull(nodeInfo);
-            var node = Activator.CreateInstance(nodeInfo.type) as Node;
-            node.position.x = data.position.x;
-            node.position.y = data.position.y;
+            if (data == null) return;
+            var type = GetType();
+            position.x = data.position.x;
+            position.y = data.position.y;
             foreach (var f in data.fields)
             {
                 var fieldName = f.Key;
                 var valueString = f.Value;
-                var field = nodeInfo.type.GetField(fieldName);
+                var field = type.GetField(fieldName);
                 if (field == null) continue;
                 if (field.FieldType == typeof(float))
                 {
                     float value;
                     if (float.TryParse(valueString, out value))
                     {
-                        field.SetValue(node, value);
+                        field.SetValue(this, value);
                     }
                 }
                 else if (field.FieldType == typeof(string))
                 {
-                    field.SetValue(node, valueString);
+                    field.SetValue(this, valueString);
                 }
                 else if (field.FieldType.IsEnum)
                 {
                     try
                     {
-                        field.SetValue(node, Enum.Parse(field.FieldType, valueString));
+                        field.SetValue(this, Enum.Parse(field.FieldType, valueString));
                     }
                     catch (Exception e)
                     {
@@ -61,8 +60,24 @@ namespace XLand
                     }
                 }
             }
+        }
 
+        public delegate void NodeInitAction(Node node);
+
+        public static Node Create(XLander xLander, Type type, NodeInitAction init = null, NodeData data = null)
+        {
+            var node = Activator.CreateInstance(type) as Node;
+            if (node == null) return null;
+            if (init != null) init(node);
+            node.LoadData(data);
+            node.OnCreated(xLander);
             return node;
+        }
+
+        public static Node Create(XLander xLander, NodeData data)
+        {
+            var nodeInfo = GetNodeInfoByName(data.type);
+            return nodeInfo == null ? null : Create(xLander, nodeInfo.type, null, data);
         }
 
         public bool IsConnectedInputField(string fieldName)
@@ -168,6 +183,17 @@ namespace XLand
             }
         }
 
+        /// <summary>
+        /// do some initialization after the node data is load
+        /// </summary>
+        /// <param name="xLander">the XLander that the node is used for</param>
+        public virtual void OnCreated(XLander xLander)
+        {
+        }
+
+        /// <summary>
+        /// do some clean up work when the node is deleted
+        /// </summary>
         public virtual void OnDeleted()
         {
         }

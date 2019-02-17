@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace XLand
@@ -10,29 +11,35 @@ namespace XLand
     {
         public readonly List<Node> nodes = new List<Node>();
 
-        public void LoadData(DataFlowGraphData data)
+        public void LoadData(DataFlowGraphData data, XLander xLander)
         {
-            try
+            var ns = new List<Node>();
+            foreach (var nodeData in data.nodes)
             {
-                nodes.Clear();
-                foreach (var nodeData in data.nodes)
-                {
-                    nodes.Add(Node.CreateFromData(nodeData));
-                }
-
-                foreach (var edgeData in data.edges)
-                {
-                    var fromNode = nodes[edgeData.fromIndex];
-                    var toNode = nodes[edgeData.toIndex];
-                    var fromField = fromNode.GetType().GetField(edgeData.fromField);
-                    var toField = toNode.GetType().GetField(edgeData.toField);
-                    if (fromField == null || toField == null) continue;
-                    AddEdge(fromNode, fromField, toNode, toField);
-                }
+                var n = Node.Create(xLander, nodeData);
+                ns.Add(n);
             }
-            catch (Exception e)
+
+            var nCnt = ns.Count;
+            foreach (var edgeData in data.edges)
             {
-                nodes.Clear();
+                var fi = edgeData.fromIndex;
+                var ti = edgeData.toIndex;
+                if (fi >= nCnt || ti >= nCnt) continue;
+                var fromNode = ns[fi];
+                var toNode = ns[ti];
+                if (fromNode == null || toNode == null) continue;
+                var fromField = fromNode.GetType().GetField(edgeData.fromField);
+                var toField = toNode.GetType().GetField(edgeData.toField);
+                if (fromField == null || toField == null) continue;
+                AddEdge(fromNode, fromField, toNode, toField);
+            }
+
+            nodes.Clear();
+            foreach (var node in ns)
+            {
+                if (node == null) continue;
+                nodes.Add(node);
             }
         }
 
@@ -61,9 +68,10 @@ namespace XLand
             return data;
         }
 
-        public Node AddNode(NodeInfo node)
+        public Node AddNode(NodeInfo node, XLander xLander)
         {
-            var n = Activator.CreateInstance(node.type) as Node;
+            var n = Node.Create(xLander, node.type);
+            if (n == null) return null;
             nodes.Add(n);
             return n;
         }
@@ -86,7 +94,6 @@ namespace XLand
 
         private void AddEdge(Edge e)
         {
-            Assert.IsTrue(nodes.Contains(e.FromNode) && nodes.Contains(e.ToNode));
             e.FromNode.AddOutputEdge(e);
             e.ToNode.AddInputEdge(e);
         }

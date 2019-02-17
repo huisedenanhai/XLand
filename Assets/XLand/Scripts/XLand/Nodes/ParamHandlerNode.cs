@@ -13,31 +13,27 @@ namespace XLand.Nodes
 
         private IParamHandler m_Handler;
 
-        private IParamHandler Handler
+        public override void OnCreated(XLander xLander)
         {
-            get
+            IParamHandler handler;
+            if (xLander.ParamHandlers.TryGetValue(paramName, out handler))
             {
-                if (m_Handler == null)
-                {
-                    m_Handler = ModelManager.Instance.CurrentActiveModel.GetComponent<XLander>()
-                        .ParamHandlers[paramName];
-                }
-
-                return m_Handler;
+                m_Handler = handler;
             }
         }
 
         public override void Evaluate()
         {
+            if (m_Handler == null) return;
             if (IsConnectedInputField("value"))
             {
                 // this node driven by the graph
-                Handler.Value = Mathf.Clamp(value, Handler.MinimumValue, Handler.MaximumValue);
+                m_Handler.Value = Mathf.Clamp(value, m_Handler.MinimumValue, m_Handler.MaximumValue);
             }
             else
             {
                 // just display the value of param
-                value = Handler.Value;
+                value = m_Handler.Value;
             }
         }
     }

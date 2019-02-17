@@ -24,13 +24,19 @@ namespace XLand
             m_XLanderAbsolutePath = Path.Combine(directory, modelName + ".xlander.json");
         }
 
+        private bool HaveParam(string name)
+        {
+            return ParamHandlers.ContainsKey(name);
+        }
+
         private void LoadData(XLanderData data)
         {
             m_DataFlowGraphs.Clear();
             foreach (var pair in data.graphs)
             {
+                if (!HaveParam(pair.Key)) continue;
                 var graph = new DataFlowGraph();
-                graph.LoadData(pair.Value);
+                graph.LoadData(pair.Value, this);
                 m_DataFlowGraphs.Add(pair.Key, graph);
             }
         }
@@ -89,7 +95,15 @@ namespace XLand
             // Ensure there is a param output node
             if (graph.nodes.All(n => n.GetType() != typeof(ParamHandlerNode)))
             {
-                graph.nodes.Add(new ParamHandlerNode {paramName = paramName});
+                var nn = Node.Create(this, typeof(ParamHandlerNode), node =>
+                {
+                    var n = node as ParamHandlerNode;
+                    n.paramName = paramName;
+                });
+                if (nn != null)
+                {
+                    graph.nodes.Add(nn);
+                }
             }
 
             return graph;

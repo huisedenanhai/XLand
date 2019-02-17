@@ -100,7 +100,9 @@ namespace XLand
 
         public void AddNode(NodeInfo nodeInfo)
         {
-            var node = CurrentDataFlowGraph.AddNode(nodeInfo);
+            var node = CurrentDataFlowGraph.AddNode(nodeInfo,
+                ModelManager.Instance.CurrentActiveModel.GetComponent<XLander>());
+            if (node == null) return;
             AddNodeDisplay(nodeInfo, node, true);
         }
 
@@ -140,7 +142,7 @@ namespace XLand
                 entries.Add(AddNodeDisplay(Node.GetNodeInfoByName(node.GetType().FullName), node));
             }
 
-            yield return null;
+            yield return null; // wait one frame for UI layout calculation
 
             foreach (var toEntry in entries)
             {
