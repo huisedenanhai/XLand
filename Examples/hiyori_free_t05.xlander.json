@@ -1,0 +1,1217 @@
+﻿{
+  "version": 0,
+  "graphs": {
+    "Position X": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": -15.0,
+            "y": -55.00006
+          },
+          "fields": {
+            "value": "0",
+            "paramName": "Position X"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "ParamEyeLOpen": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 465.999878,
+            "y": 197.000061
+          },
+          "fields": {
+            "paramName": "ParamEyeLOpen"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -718.0001,
+            "y": -294.0
+          },
+          "fields": {
+            "location": "EyeBlinkLeft"
+          }
+        },
+        {
+          "type": "XLand.Nodes.LerpNode",
+          "position": {
+            "x": -153.0,
+            "y": 191.0
+          },
+          "fields": {
+            "a": "1.2",
+            "b": "-0.2"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 2,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "value",
+          "toIndex": 2,
+          "toField": "t"
+        }
+      ]
+    },
+    "ParamEyeROpen": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 379.7882,
+            "y": 72.47864
+          },
+          "fields": {
+            "paramName": "ParamEyeROpen"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -724.59314,
+            "y": -156.479126
+          },
+          "fields": {
+            "location": "EyeBlinkRight"
+          }
+        },
+        {
+          "type": "XLand.Nodes.LerpNode",
+          "position": {
+            "x": -185.000122,
+            "y": 256.0
+          },
+          "fields": {
+            "a": "1.2",
+            "b": "-0.2"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 2,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "value",
+          "toIndex": 2,
+          "toField": "t"
+        }
+      ]
+    },
+    "ParamBreath": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 93.0002441,
+            "y": 84.0
+          },
+          "fields": {
+            "paramName": "ParamBreath"
+          }
+        },
+        {
+          "type": "XLand.Nodes.SinWaveNode",
+          "position": {
+            "x": -564.0,
+            "y": -203.999878
+          },
+          "fields": {
+            "amplitude": "1",
+            "period": "3",
+            "phase": "0"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 1,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        }
+      ]
+    },
+    "ParamArmLA": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "value": "0",
+            "paramName": "ParamArmLA"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "ParamMouthOpenY": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "paramName": "ParamMouthOpenY"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -540.9999,
+            "y": -261.0
+          },
+          "fields": {
+            "location": "JawOpen"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 1,
+          "fromField": "value",
+          "toIndex": 0,
+          "toField": "value"
+        }
+      ]
+    },
+    "ParamMouthForm": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "value": "1",
+            "paramName": "ParamMouthForm"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "ParamBrowLForm": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 30.0,
+            "y": -12.000061
+          },
+          "fields": {
+            "paramName": "ParamBrowLForm"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1704.56055,
+            "y": -487.943848
+          },
+          "fields": {
+            "location": "BrowDownLeft"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -1060.19385,
+            "y": 430.195
+          },
+          "fields": {
+            "op": "Add"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1703.7406,
+            "y": 580.648254
+          },
+          "fields": {
+            "location": "BrowInnerUp"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1706.5603,
+            "y": 56.8418579
+          },
+          "fields": {
+            "location": "BrowOuterUpLeft"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -1078.28687,
+            "y": -296.019653
+          },
+          "fields": {
+            "a": "2",
+            "op": "Mul"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -547.5879,
+            "y": 179.122437
+          },
+          "fields": {
+            "op": "Sub"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 6,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "value",
+          "toIndex": 2,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 4,
+          "fromField": "value",
+          "toIndex": 2,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "value",
+          "toIndex": 5,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "c",
+          "toIndex": 6,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 5,
+          "fromField": "c",
+          "toIndex": 6,
+          "toField": "b"
+        }
+      ]
+    },
+    "ParamBrowRForm": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 456.0,
+            "y": 110.999939
+          },
+          "fields": {
+            "paramName": "ParamBrowRForm"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1373.00012,
+            "y": -461.0
+          },
+          "fields": {
+            "location": "BrowDownRight"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1340.00012,
+            "y": 476.000122
+          },
+          "fields": {
+            "location": "BrowInnerUp"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.BlendShapes",
+          "position": {
+            "x": -1366.0,
+            "y": 11.000061
+          },
+          "fields": {
+            "location": "BrowOuterUpRight"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -702.9999,
+            "y": -276.999756
+          },
+          "fields": {
+            "a": "2",
+            "op": "Mul"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -714.0,
+            "y": 361.000244
+          },
+          "fields": {
+            "op": "Add"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -78.0,
+            "y": 70.0002441
+          },
+          "fields": {
+            "op": "Sub"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 6,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "value",
+          "toIndex": 4,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "value",
+          "toIndex": 5,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "value",
+          "toIndex": 5,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 5,
+          "fromField": "c",
+          "toIndex": 6,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 4,
+          "fromField": "c",
+          "toIndex": 6,
+          "toField": "b"
+        }
+      ]
+    },
+    "ParamEyeLSmile": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "value": "0",
+            "paramName": "ParamEyeLSmile"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "Position Y": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "paramName": "Position Y"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ValueInputNode",
+          "position": {
+            "x": -3.70440674,
+            "y": 291.306183
+          },
+          "fields": {
+            "value": "-1"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 1,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        }
+      ]
+    },
+    "Scale X": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "paramName": "Scale X"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ValueInputNode",
+          "position": {
+            "x": 5.47790527,
+            "y": 305.499054
+          },
+          "fields": {
+            "value": "3"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 1,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        }
+      ]
+    },
+    "Scale Y": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "fields": {
+            "paramName": "Scale Y"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ValueInputNode",
+          "position": {
+            "x": 2.56298828,
+            "y": 299.906128
+          },
+          "fields": {
+            "value": "3"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 1,
+          "fromField": "output",
+          "toIndex": 0,
+          "toField": "value"
+        }
+      ]
+    },
+    "ParamAngleY": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 379.000122,
+            "y": -96.99994
+          },
+          "fields": {
+            "paramName": "ParamAngleY"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -480.0,
+            "y": 681.0
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetRotation",
+          "position": {
+            "x": 187.0,
+            "y": 275.0
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": -555.0,
+            "y": 102.999817
+          },
+          "fields": {
+            "target": "0"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -123.0,
+            "y": -426.999756
+          },
+          "fields": {
+            "b": "-1",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 4,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "x",
+          "toIndex": 3,
+          "toField": "current"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "output",
+          "toIndex": 4,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamAngleZ": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 383.0,
+            "y": -13.0001221
+          },
+          "fields": {
+            "paramName": "ParamAngleZ"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -377.0,
+            "y": 487.0
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetRotation",
+          "position": {
+            "x": 234.999878,
+            "y": 561.0
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": -472.0,
+            "y": 77.0
+          },
+          "fields": {
+            "target": "0"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -102.0,
+            "y": -339.0
+          },
+          "fields": {
+            "b": "1",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 4,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "y",
+          "toIndex": 3,
+          "toField": "current"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "output",
+          "toIndex": 4,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamAngleX": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 573.0,
+            "y": 57.0
+          },
+          "fields": {
+            "paramName": "ParamAngleX"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -536.170837,
+            "y": 632.0464
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetRotation",
+          "position": {
+            "x": 86.62927,
+            "y": 389.081177
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": -445.0,
+            "y": -176.999817
+          },
+          "fields": {
+            "target": "0"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": 121.0,
+            "y": -393.999878
+          },
+          "fields": {
+            "b": "-2",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 4,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "z",
+          "toIndex": 3,
+          "toField": "current"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "output",
+          "toIndex": 4,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamBodyAngleY": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 270.999878,
+            "y": -139.0
+          },
+          "fields": {
+            "paramName": "ParamBodyAngleY"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -441.0,
+            "y": 480.0
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetPosition",
+          "position": {
+            "x": 243.0,
+            "y": 518.0
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -527.0,
+            "y": 116.000061
+          },
+          "fields": {
+            "b": "100",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 3,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "y",
+          "toIndex": 3,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamBodyAngleZ": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 242.999878,
+            "y": -85.0
+          },
+          "fields": {
+            "paramName": "ParamBodyAngleZ"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -324.0,
+            "y": 462.0
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetPosition",
+          "position": {
+            "x": 246.000122,
+            "y": 375.0
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -396.0,
+            "y": -145.0
+          },
+          "fields": {
+            "b": "70",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 3,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "x",
+          "toIndex": 3,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamBodyAngleX": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 421.0,
+            "y": 53.0
+          },
+          "fields": {
+            "paramName": "ParamBodyAngleX"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.FaceTransform",
+          "position": {
+            "x": -645.0,
+            "y": 479.0
+          },
+          "fields": {
+            "pivotType": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.GetRotation",
+          "position": {
+            "x": -53.0,
+            "y": 522.0
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -49.0,
+            "y": -12.0
+          },
+          "fields": {
+            "b": "0.5",
+            "op": "Mul"
+          }
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": -639.0,
+            "y": 110.999817
+          },
+          "fields": {
+            "target": "0"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 3,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "matrix",
+          "toIndex": 2,
+          "toField": "matrix"
+        },
+        {
+          "fromIndex": 4,
+          "fromField": "output",
+          "toIndex": 3,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "y",
+          "toIndex": 4,
+          "toField": "current"
+        }
+      ]
+    },
+    "ParamEyeBallX": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 291.0735,
+            "y": -371.490479
+          },
+          "fields": {
+            "paramName": "ParamEyeBallX"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.LeftEyeRotation",
+          "position": {
+            "x": -1021.74524,
+            "y": 547.278748
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.ARKit.RightEyeRotation",
+          "position": {
+            "x": -1018.66309,
+            "y": 230.908752
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.LerpAngleNode",
+          "position": {
+            "x": -373.598267,
+            "y": 583.770752
+          },
+          "fields": {
+            "t": "0.5"
+          }
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": 354.999878,
+            "y": 416.000244
+          },
+          "fields": {
+            "target": "0"
+          }
+        },
+        {
+          "type": "XLand.Nodes.FloatPivotNode",
+          "position": {
+            "x": -379.073181,
+            "y": 107.3855
+          },
+          "fields": {
+            "pivot": "11.78731",
+            "mode": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -370.0,
+            "y": -407.999634
+          },
+          "fields": {
+            "b": "0.1",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 6,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "z",
+          "toIndex": 3,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "z",
+          "toIndex": 3,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 5,
+          "fromField": "displacement",
+          "toIndex": 4,
+          "toField": "current"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "output",
+          "toIndex": 5,
+          "toField": "input"
+        },
+        {
+          "fromIndex": 4,
+          "fromField": "output",
+          "toIndex": 6,
+          "toField": "a"
+        }
+      ]
+    },
+    "ParamEyeBallY": {
+      "nodes": [
+        {
+          "type": "XLand.Nodes.ParamHandlerNode",
+          "position": {
+            "x": 447.2788,
+            "y": 29.7258911
+          },
+          "fields": {
+            "paramName": "ParamEyeBallY"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ARKit.LeftEyeRotation",
+          "position": {
+            "x": -787.3717,
+            "y": 538.7389
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.ARKit.RightEyeRotation",
+          "position": {
+            "x": -784.9616,
+            "y": 174.855286
+          },
+          "fields": {}
+        },
+        {
+          "type": "XLand.Nodes.LerpAngleNode",
+          "position": {
+            "x": -137.751587,
+            "y": 520.542358
+          },
+          "fields": {
+            "t": "0.5"
+          }
+        },
+        {
+          "type": "XLand.Nodes.DeltaAngleNode",
+          "position": {
+            "x": 444.630737,
+            "y": 584.0835
+          },
+          "fields": {
+            "target": "0"
+          }
+        },
+        {
+          "type": "XLand.Nodes.FloatPivotNode",
+          "position": {
+            "x": -137.12854,
+            "y": 62.8068237
+          },
+          "fields": {
+            "pivot": "30.10812",
+            "mode": "Dynamic"
+          }
+        },
+        {
+          "type": "XLand.Nodes.ArithmeticNode",
+          "position": {
+            "x": -139.498657,
+            "y": -393.789063
+          },
+          "fields": {
+            "b": "0.06",
+            "op": "Mul"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "fromIndex": 6,
+          "fromField": "c",
+          "toIndex": 0,
+          "toField": "value"
+        },
+        {
+          "fromIndex": 1,
+          "fromField": "x",
+          "toIndex": 3,
+          "toField": "a"
+        },
+        {
+          "fromIndex": 2,
+          "fromField": "x",
+          "toIndex": 3,
+          "toField": "b"
+        },
+        {
+          "fromIndex": 3,
+          "fromField": "output",
+          "toIndex": 4,
+          "toField": "current"
+        },
+        {
+          "fromIndex": 4,
+          "fromField": "output",
+          "toIndex": 5,
+          "toField": "input"
+        },
+        {
+          "fromIndex": 5,
+          "fromField": "displacement",
+          "toIndex": 6,
+          "toField": "a"
+        }
+      ]
+    }
+  }
+}

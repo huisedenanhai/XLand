@@ -155,7 +155,7 @@ class MyCustomNode : Node
 >
 > Q：已经绑好的节点图文件么（躺）
 >
-> A：勤奋的同学可以绑完之后给我Pull requests（躺）
+> A：有的。Examples文件夹下有一个桃瀬ひより对应的节点图。ひより的模型请自行去Live2D官网下载。
 
 ## 已知的BUG
 

@@ -60,6 +60,7 @@ namespace XLand
             CalculateRightEyePosition();
             CalculateRightEyeEuler();
             CalculateLookAtPoint();
+            CalculateFaceTransform();
         }
 
         private static ARFaceAnchor FaceAnchor { set; get; }
@@ -180,6 +181,17 @@ namespace XLand
             if (anchor == null || !anchor.isTracked) return;
             var rotation = UnityARMatrixOps.GetRotation(anchor.transform);
             m_FaceEuler = rotation.eulerAngles;
+        }
+
+        public static Matrix4x4 FaceTransform = Matrix4x4.identity;
+        public static Matrix4x4 FaceInverseTransform = Matrix4x4.identity;
+
+        private static void CalculateFaceTransform()
+        {
+            var anchor = FaceAnchor;
+            if (anchor == null || !anchor.isTracked) return;
+            FaceTransform = anchor.transform;
+            FaceInverseTransform = Matrix4x4.Inverse(FaceTransform);
         }
     }
 }
